@@ -4,6 +4,15 @@
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
   <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
   <script type="text/javascript">
+    // tell user that it only works in chrome right now
+    $(document).ready(function(){
+      var isChrome = /Chrome/.test(navigator.userAgent) && /Google Inc/.test(navigator.vendor);
+      if (!isChrome) {
+        $("#browserNote").text("Sorry! Right now this only works in Chrome.");
+      }
+    });
+  </script>
+  <script type="text/javascript">
     var accessToken = "dce399808780466db898fad9bfae71fe",
       baseUrl = "https://api.api.ai/v1/",
       $speechInput,
@@ -147,6 +156,13 @@
       font-size: 20px;
       margin: 0;
     }
+    #browserNote {
+      color: white;
+    }
+    #githubLink {
+      color: white;
+      margin: 10px;
+    }
     .container {
       position: fixed;
       top: 50%;
@@ -227,7 +243,9 @@
   </style>
 </head>
 <body>
+  <p id='githubLink'>See the GitHub repo <a href='https://github.com/hchiam/Api-AI-Personal-Assistant-Demo' target="_blank">here</a>.</p>
   <div class="container">
+    <p id='browserNote'></p>
     <input id="speech" type="text">
     <button id="rec" class="btn">Speak</button>
     <div id="spokenResponse" class="spoken-response">
